@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="win32,内核," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Win32">
+<meta property="og:type" content="article">
+<meta property="og:title" content="win32">
+<meta property="og:url" content="https://walker-nie.github.io/win32/win32/index.html">
+<meta property="og:site_name" content="walker&#39;s blog">
+<meta property="og:description" content="Win32">
+<meta property="og:locale">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210224163806885.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210224163841852.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210225154836498.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210225190048656.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/%E8%BF%9B%E7%A8%8B%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF%EF%BC%88PEB%EF%BC%89.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210301142429269.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210301142555330.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210301142816239.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210301143337293.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210301144837645.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210301145944169.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210301183627625.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/windows内核/内核技术.assets/image-20210302130823287.png">
+<meta property="og:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210210162940870.png">
+<meta property="article:published_time" content="2022-01-02T09:08:26.000Z">
+<meta property="article:modified_time" content="2022-01-02T10:07:56.421Z">
+<meta property="article:author" content="walker">
+<meta property="article:tag" content="win32">
+<meta property="article:tag" content="内核">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://walker-nie.github.io/win32/win32/Win32.assets/image-20210224163806885.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://walker-nie.github.io/win32/win32/"/>
+
+
+
+
+
+  <title>win32 | walker's blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">walker's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://walker-nie.github.io/win32/win32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2Ff6%2Fc9%2Ff6%2Ff6c9f647a533782026c0609ac5d550df.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643531815&t=c2c18e0685888311dca4f731dd286208">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="walker's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">win32</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-02T17:08:26+08:00">
+                2022-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/win32/" itemprop="url" rel="index">
+                    <span itemprop="name">win32</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,142 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  25 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Win32"><a href="#Win32" class="headerlink" title="Win32"></a>Win32</h1><span id="more"></span>
+
+
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><code>Win32 API </code> 的分类如下表：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+<th>dll</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基础服务（Base Services）</td>
+<td>内核函数，提供对Windows系统基础资源的访问接口。如文件系统、内存管理、外部设备、进程(process) 、线程(thread) 以及访问注册表和错误处理机制。</td>
+<td>kernel32.dlI</td>
+</tr>
+<tr>
+<td>图形设备接口（GDI）</td>
+<td>输出图形内容到显示器、打印机以及其他外部输出设备。</td>
+<td>gdi32.dll</td>
+</tr>
+<tr>
+<td>图形化用户界面（GUI）</td>
+<td>Windows用户界面相关应用程序接口，提供的功能有创建和管理屏幕和大多数基本控件（control）。如创建窗口、滚动条、消息、菜单、光标、计时器和发送消息以及其他与GUI有关的功能。</td>
+<td>user32.dll</td>
+</tr>
+<tr>
+<td>通用控件链接库（Common Control Library）</td>
+<td>为应用程序提供接口来访问操作系统提供的一些高级控件。如：状态栏（status bar）、进度条（progress bars）、工具栏（toolbar) 和标签（tab)。</td>
+<td>comctl32.dlI</td>
+</tr>
+<tr>
+<td>Windows外壳（Windows Shell）</td>
+<td>作为Windows API的组成部分，不仅允许应用程序访问Windows外壳提供的功能，还对之有所改进和增强。</td>
+<td>shell32.dII</td>
+</tr>
+<tr>
+<td>网络服务（Network Services）</td>
+<td>为访问操作系统提供的多种网络功能提供接口。它包括NetBIOS、Winsock、 NetDDE及RPC等。</td>
+<td>ws2_ 32.dIl</td>
+</tr>
+</tbody></table>
+<h3 id="句柄"><a href="#句柄" class="headerlink" title="句柄"></a>句柄</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GetModuleHandle</td>
+<td>通过进程名获取进程句柄（<code>NULL</code> 表示获取当前进程）<br>获取的值位模块的基址</td>
+</tr>
+<tr>
+<td>OpenProcess</td>
+<td>通过进程 <code>PID</code> 获取进程句柄</td>
+</tr>
+<tr>
+<td>GetProcessImageFileName</td>
+<td>通过进程句柄获取程序文件路径</td>
+</tr>
+<tr>
+<td>GetCurrentProcess</td>
+<td>获取当前进程的句柄</td>
+</tr>
+<tr>
+<td>GetCurrentThread</td>
+<td>获取当前线程的句柄</td>
+</tr>
+<tr>
+<td>GetCurrentProcessId</td>
+<td>获取当前进程的 <code>PID</code></td>
+</tr>
+<tr>
+<td>EnumProcessModules</td>
+<td>通过进程句柄遍历进程模块</td>
+</tr>
+<tr>
+<td>OutputDebugString</td>
+<td>输出调试信息</td>
+</tr>
+<tr>
+<td>PathFindFileName</td>
+<td>根据文件路径获取文件名</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GetThreadId</td>
+<td>通过线程句柄获取线程 <code>ID</code></td>
+</tr>
+<tr>
+<td>CreateFileMapping</td>
+<td>创建共享内存</td>
+</tr>
+<tr>
+<td>MapViewOfFile</td>
+<td>将共享内存映射进进程空间</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>注：</p>
+<p>使用 <code>PathFindFileName</code> 函数时，需要加载以下文件头：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;shlwapi.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib,<span class="meta-string">&quot;Shlwapi.lib&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VirtualProtectEx</td>
+<td>设置指定进程的页面属性</td>
+</tr>
+<tr>
+<td>VirtualProtect</td>
+<td>设置本进程的页面属性</td>
+</tr>
+<tr>
+<td>VirtualAllocEx</td>
+<td>通过进程句柄为特定进程申请内存</td>
+</tr>
+<tr>
+<td>VirtualAlloc</td>
+<td>为本进程申请内存</td>
+</tr>
+<tr>
+<td>VirtualFreeEx</td>
+<td>通过进程句柄为特定进程释放内存</td>
+</tr>
+<tr>
+<td>VirtualFree</td>
+<td>为本进程释放内存</td>
+</tr>
+<tr>
+<td>CreateFileMapping</td>
+<td>申请共享内存</td>
+</tr>
+<tr>
+<td>MapViewOfFile</td>
+<td>将共享内存映射入进程空间</td>
+</tr>
+<tr>
+<td>SetWindowsHookExA</td>
+<td>设置钩子</td>
+</tr>
+</tbody></table>
+<h3 id="进程安全"><a href="#进程安全" class="headerlink" title="进程安全"></a>进程安全</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IsDebuggerPresent</td>
+<td>检查本进程是否被三环调试器调试</td>
+</tr>
+<tr>
+<td>CheckRemoteDebuggerPresent</td>
+<td>检查是否存在远程调试指定进程</td>
+</tr>
+<tr>
+<td>TerminateProcess</td>
+<td>通过进程句柄终结进程及其所有子线程</td>
+</tr>
+<tr>
+<td>QueueUserAPC</td>
+<td>将用户模式异步过程调用（APC）对象添加到指定线程的 <code>APC</code> 队列中</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_wtoi / _ttoi  / _itow / _itot</td>
+<td>宽字节字符串与数字间转换</td>
+</tr>
+<tr>
+<td>wcstombs</td>
+<td><code>Unicode</code> 转 <code>ANSI</code></td>
+</tr>
+<tr>
+<td>mbstowcs</td>
+<td><code>ANSI</code> 转 <code>Unicode</code></td>
+</tr>
+</tbody></table>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p>由于进程间的虚拟内存空间的相对独立的，如果想要实现进程间的通信，则需要通过特殊的途径实现。</p>
+<h4 id="自定义消息"><a href="#自定义消息" class="headerlink" title="自定义消息"></a>自定义消息</h4><p>对于 <code>Windows</code> 程序而言，其工作机制是基于消息基址实现的，而且系统会有一个系统消息队列用于接收所有进程的消息，通过窗口（控件）句柄分发给特定的进程。因此，我们可以通过消息机制，向特定进程发送消息，以实现进程间的通信。</p>
+<p>但是，当我们向通过句柄向特定进程发送系统定义的消息时， 目标进程中可能存在该消息的处理函数，其处理函数的逻辑必然与我们想要实现的不同，这同样无法达到我们的目的。</p>
+<p>因此，我们可以通过自定义消息，这样就可以避免被目标进程按照其原本的逻辑处理。我们可以通过 <code>Windows AIP</code> 函数向目标进程中注入消息处理函数，以实现目标进程接收我们自定义的消息，并按照我们定义的消息处理函数进行消息处理。</p>
+ <!-- 详情见, 恶意代码-Hook-Global Hook -->
+
+
+
+<h4 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h4><p>我们可以通过 <code>CreateFileMapping</code> 申请一块共享内存，并通过 <code>MapViewOfFile</code> 函数将共享内存对象映射进进程的内存空间，以实现进程间的消息通信。</p>
+<p>测试代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">CreateSharedMemory</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;				</span><br><span class="line">	<span class="comment">//创建FileMapping对象					</span></span><br><span class="line">	hMapObject = CreateFileMapping((HANDLE)<span class="number">0xFFFFFFFF</span>,<span class="literal">NULL</span>,PAGE_READWRITE,<span class="number">0</span>,<span class="number">0x1000</span>,TEXT(<span class="string">&quot;shared&quot;</span>));					</span><br><span class="line">	<span class="keyword">if</span>(!hMapObject)									</span><br><span class="line">		<span class="keyword">return</span> FALSE;				</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//将FileMapping对象映射到自己的进程					</span></span><br><span class="line">	lpszSharedBuff = MapViewOfFile(hMapObject,FILE_MAP_WRITE,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);					</span><br><span class="line">	<span class="keyword">if</span>(!lpszSharedBuff)								</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	</span><br><span class="line">	sm = lpszSharedBuff;</span><br><span class="line">	sm-&gt;dwBuffMax = <span class="number">0x100</span>;</span><br><span class="line">	sm-&gt;lpszBuff = (LPSTR)((DWORD)lpszSharedBuff+<span class="number">12</span>);</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">Write</span><span class="params">(LPSTR lpszBuff, DWORD dwBuffLen)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(sm-&gt;dwBuffMax &lt; dwBuffLen)</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line"></span><br><span class="line">	ZeroMemory(sm-&gt;lpszBuff, g_dwBuffMax);</span><br><span class="line">	<span class="built_in">memcpy</span>(sm-&gt;lpszBuff, lpszBuff, dwBuffLen);</span><br><span class="line">	sm-&gt;dwBuffLen = dwBuffLen;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD <span class="title">Read</span><span class="params">(LPSTR lpszBuff, DWORD dwBuffLen)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dwBuffLen &lt; sm-&gt;dwBuffLen)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	ZeroMemory(lpszBuff, dwBuffLen);</span><br><span class="line">	<span class="built_in">memcpy</span>(lpszBuff, sm-&gt;lpszBuff, sm-&gt;dwBuffLen);</span><br><span class="line">	<span class="keyword">return</span> sm-&gt;dwBuffLen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="匿名管道"><a href="#匿名管道" class="headerlink" title="匿名管道"></a>匿名管道</h4><p>我们可以通过创建匿名管道实现进程间的通信，但是进程间的通信方式是建立在父进程与子进程的关系上。</p>
+<p>测试代码如下：</p>
+<p><strong>父进程</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	HANDLE hRead;										</span><br><span class="line">	HANDLE hWrite;</span><br><span class="line">	CHAR szBuff[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">											</span><br><span class="line">	SECURITY_ATTRIBUTES sa;										</span><br><span class="line">											</span><br><span class="line">	sa.bInheritHandle = TRUE;										</span><br><span class="line">	sa.lpSecurityDescriptor = <span class="literal">NULL</span>;										</span><br><span class="line">	sa.nLength = <span class="keyword">sizeof</span>(SECURITY_ATTRIBUTES);										</span><br><span class="line">											</span><br><span class="line">	<span class="keyword">if</span>(!CreatePipe(&amp;hRead,&amp;hWrite,&amp;sa,<span class="number">0</span>))										</span><br><span class="line">	&#123;										</span><br><span class="line">		MessageBox(<span class="number">0</span>,TEXT(<span class="string">&quot;创建匿名管道失败!&quot;</span>),TEXT(<span class="string">&quot;Error&quot;</span>),MB_OK);									</span><br><span class="line">	&#125;										</span><br><span class="line">											</span><br><span class="line">	STARTUPINFO si;										</span><br><span class="line">	PROCESS_INFORMATION pi;										</span><br><span class="line">											</span><br><span class="line">	ZeroMemory(&amp;si,<span class="keyword">sizeof</span>(STARTUPINFO));										</span><br><span class="line">											</span><br><span class="line">	si.cb = <span class="keyword">sizeof</span>(STARTUPINFO);										</span><br><span class="line">	si.dwFlags = STARTF_USESTDHANDLES;										</span><br><span class="line">	si.hStdInput = hRead;										</span><br><span class="line">	si.hStdOutput = hWrite;										</span><br><span class="line">	si.hStdError = GetStdHandle(STD_ERROR_HANDLE);										</span><br><span class="line">											</span><br><span class="line">	<span class="keyword">if</span>(!CreateProcess(<span class="string">&quot;C:\\vc6++\\MyProjects\\1\\Debug\\1.exe&quot;</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,TRUE,<span class="number">0</span>,<span class="literal">NULL</span>,<span class="literal">NULL</span>,&amp;si,&amp;pi))										</span><br><span class="line">	&#123;										</span><br><span class="line">		CloseHandle(hRead);									</span><br><span class="line">		CloseHandle(hWrite);									</span><br><span class="line">		hRead = <span class="literal">NULL</span>;									</span><br><span class="line">		hWrite = <span class="literal">NULL</span>;									</span><br><span class="line">		MessageBox(<span class="number">0</span>,TEXT(<span class="string">&quot;创建子进程失败!&quot;</span>),TEXT(<span class="string">&quot;Error&quot;</span>),MB_OK);									</span><br><span class="line">	&#125;										</span><br><span class="line">	<span class="keyword">else</span>										</span><br><span class="line">	&#123;										</span><br><span class="line">		CloseHandle(pi.hProcess);									</span><br><span class="line">		CloseHandle(pi.hThread);									</span><br><span class="line">	&#125;																				</span><br><span class="line">											</span><br><span class="line">	<span class="comment">//写数据	</span></span><br><span class="line">	LPSTR lpszBuff = <span class="string">&quot;haha,walker!&quot;</span>;</span><br><span class="line">	<span class="built_in">memcpy</span>(szBuff, lpszBuff, <span class="built_in">strlen</span>(lpszBuff));										</span><br><span class="line">	DWORD dwWrite;										</span><br><span class="line">	<span class="keyword">if</span>(!WriteFile(hWrite,szBuff,<span class="built_in">strlen</span>(szBuff)+<span class="number">1</span>,&amp;dwWrite,<span class="literal">NULL</span>))										</span><br><span class="line">	&#123;										</span><br><span class="line">		MessageBox(<span class="number">0</span>,TEXT(<span class="string">&quot;写数据失败!&quot;</span>),TEXT(<span class="string">&quot;Error&quot;</span>),MB_OK);									</span><br><span class="line">	&#125;										</span><br><span class="line">		</span><br><span class="line">	system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="comment">//读数据													</span></span><br><span class="line">	DWORD dwRead;										</span><br><span class="line">	<span class="keyword">if</span>(!ReadFile(hRead,szBuff,<span class="number">100</span>,&amp;dwRead,<span class="literal">NULL</span>))										</span><br><span class="line">	&#123;										</span><br><span class="line">		MessageBox(<span class="literal">NULL</span>,TEXT(<span class="string">&quot;读取数据失败!&quot;</span>),TEXT(<span class="string">&quot;Error&quot;</span>),MB_OK);									</span><br><span class="line">	&#125;										</span><br><span class="line">	<span class="keyword">else</span>										</span><br><span class="line">	&#123;										</span><br><span class="line">		MessageBox(<span class="literal">NULL</span>,szBuff,TEXT(<span class="string">&quot;[读取数据]&quot;</span>),MB_OK);									</span><br><span class="line">	&#125;	</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>子进程</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//初始化										</span></span><br><span class="line">	HANDLE hRead = GetStdHandle(STD_INPUT_HANDLE);										</span><br><span class="line">	HANDLE hWrite = GetStdHandle(STD_OUTPUT_HANDLE);  										</span><br><span class="line">											</span><br><span class="line">	<span class="comment">//读数据										</span></span><br><span class="line">	TCHAR szBuffer[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;										</span><br><span class="line">	DWORD dwRead;										</span><br><span class="line">	<span class="keyword">if</span>(!ReadFile(hRead,szBuffer,<span class="number">100</span>,&amp;dwRead,<span class="literal">NULL</span>))										</span><br><span class="line">	&#123;										</span><br><span class="line">		MessageBox(<span class="literal">NULL</span>,TEXT(<span class="string">&quot;读取数据失败!&quot;</span>),TEXT(<span class="string">&quot;Error&quot;</span>),MB_OK);									</span><br><span class="line">	&#125;										</span><br><span class="line">	<span class="keyword">else</span>										</span><br><span class="line">	&#123;										</span><br><span class="line">		MessageBox(<span class="literal">NULL</span>,szBuffer,TEXT(<span class="string">&quot;[读取数据]&quot;</span>),MB_OK);									</span><br><span class="line">	&#125;										</span><br><span class="line">											</span><br><span class="line">	<span class="comment">//写数据										</span></span><br><span class="line">	<span class="built_in">memcpy</span>(szBuffer, <span class="string">&quot;匿名管道&quot;</span>, <span class="number">0x10</span>);										</span><br><span class="line">	DWORD dwWrite;										</span><br><span class="line">	<span class="keyword">if</span>(!WriteFile(hWrite,szBuffer,<span class="built_in">strlen</span>(szBuffer)+<span class="number">1</span>,&amp;dwWrite,<span class="literal">NULL</span>))										</span><br><span class="line">	&#123;										</span><br><span class="line">		MessageBox(<span class="literal">NULL</span>,TEXT(<span class="string">&quot;写入数据失败!&quot;</span>),TEXT(<span class="string">&quot;Error&quot;</span>),MB_OK);									</span><br><span class="line">	&#125;	</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="Win32.assets/image-20210224163806885.png" alt="image-20210224163806885" style="zoom:80%;" align='left'/>
+
+
+
+<img src="Win32.assets/image-20210224163841852.png" alt="image-20210224163841852" style="zoom:80%;" align='left'/>
+
+
+
+<h4 id="命名管道"><a href="#命名管道" class="headerlink" title="命名管道"></a>命名管道</h4><!-- 略 -->
+
+
+
+<h4 id="Dll共享节"><a href="#Dll共享节" class="headerlink" title="Dll共享节"></a>Dll共享节</h4><p>我们可以在 <code>Dll</code> 中申请一个共享节，当进程加载该 <code>Dll</code> 文件后，不同进程都可以实现对该共享节内存的读写，以此实现进程间的数据共享。其中，共享节的申请方式如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg(<span class="meta-string">&quot;.shared&quot;</span>)</span></span><br><span class="line"><span class="comment">/* 全局变量, 必须初始化 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">&quot;/section:.shared,rws&quot;</span>)	<span class="comment">// 声明该共享节的属性</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//也可以使用以下方式定义全局变量, 必须初始化</span></span><br><span class="line"><span class="comment">//__declspec(allocate(&quot;Shared&quot;))LPSTR lpszName = &quot;walker&quot;;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 全局变量、函数的简便导出方法是在 *.def 文件中直接添加函数声明即可, 不必初始化。</span></span><br><span class="line"><span class="comment">	在程序调用时, 和函数调用一样, 使用 GetProcAddress 函数得到变量地址。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，一般我们会将 <code>Dll</code> 中的全局变量封装在函数中进行操作，而不会直接导出。</p>
+<img src="Win32.assets/image-20210225154836498.png" alt="image-20210225154836498" style="zoom:80%;" align='left'/>
+
+<p>可以看到，此时<code>.shared</code> 段已经具有可读、可写、可执行的权限。</p>
+<p><strong>存在哪些坑？</strong></p>
+<p><strong>即使Dll共享节中的变量被放在声明中，但是它们必须初始化，否则编译器会将之当作普通变量进行编译，即无法实现Dll共享节！</strong></p>
+<hr>
+<p>测试代码如下：</p>
+<p><strong>Dll</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;TlHelp32.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> HMODULE g_hModuleOfDll;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg(<span class="meta-string">&quot;shared&quot;</span>)</span></span><br><span class="line">HHOOK g_hHook = <span class="literal">NULL</span>;</span><br><span class="line">BYTE g_szBuff[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">DWORD g_dwBuffLen = <span class="number">0</span>;</span><br><span class="line">DWORD g_dwBuffMax = <span class="keyword">sizeof</span>(g_szBuff);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">&quot;/section:shared,rws&quot;</span>)</span></span><br><span class="line">BYTE szBuff[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 提权函数：提升为DEBUG权限 (貌似没什么作用)</span></span><br><span class="line"><span class="function">BOOL <span class="title">EnableDebugPrivilege</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	HANDLE hToken;</span><br><span class="line">	BOOL fOk = FALSE;</span><br><span class="line">	<span class="keyword">if</span> (OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, &amp;hToken))</span><br><span class="line">	&#123;</span><br><span class="line">		TOKEN_PRIVILEGES tp;</span><br><span class="line">		tp.PrivilegeCount = <span class="number">1</span>;</span><br><span class="line">		LookupPrivilegeValue(<span class="literal">NULL</span>, SE_DEBUG_NAME, &amp;tp.Privileges[<span class="number">0</span>].Luid);</span><br><span class="line"></span><br><span class="line">		tp.Privileges[<span class="number">0</span>].Attributes = SE_PRIVILEGE_ENABLED;</span><br><span class="line">		AdjustTokenPrivileges(hToken, FALSE, &amp;tp, <span class="keyword">sizeof</span>(tp), <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">		fOk = (GetLastError() == ERROR_SUCCESS);</span><br><span class="line">		CloseHandle(hToken);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fOk;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">Write</span><span class="params">(LPSTR lpszBuff, DWORD dwBuffLen)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(g_dwBuffMax &lt; dwBuffLen)</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line"></span><br><span class="line">	ZeroMemory(g_szBuff, g_dwBuffMax);</span><br><span class="line">	<span class="built_in">memcpy</span>(g_szBuff, lpszBuff, dwBuffLen);</span><br><span class="line">	g_dwBuffLen = dwBuffLen;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD <span class="title">Read</span><span class="params">(LPSTR lpszBuff, DWORD dwBuffLen)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dwBuffLen &lt; g_dwBuffLen)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	ZeroMemory(lpszBuff, dwBuffLen);</span><br><span class="line">	<span class="built_in">memcpy</span>(lpszBuff, g_szBuff, g_dwBuffLen);</span><br><span class="line">	<span class="keyword">return</span> g_dwBuffLen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD <span class="title">GetWindowThreadID</span><span class="params">(LPSTR lpszWindowName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 初始化</span></span><br><span class="line">	HANDLE hProcess;</span><br><span class="line">	HANDLE hThreadSnap = <span class="literal">NULL</span>;	<span class="comment">// 模块快照</span></span><br><span class="line">	DWORD th32ThreadID = <span class="number">0</span>;</span><br><span class="line">	DWORD dwPid = <span class="number">0x00</span>;</span><br><span class="line">	THREADENTRY32 thread32 = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	BOOL bMoreOfThread;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取进程句柄</span></span><br><span class="line">	HWND hwnd = FindWindow(<span class="literal">NULL</span>, lpszWindowName);</span><br><span class="line">	<span class="keyword">if</span> (!hwnd)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//printf(&quot;获取进程句柄失败！\n&quot;);</span></span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	GetWindowThreadProcessId(hwnd, &amp;dwPid);</span><br><span class="line">	hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//获取线程ID</span></span><br><span class="line">	thread32.dwSize = <span class="keyword">sizeof</span>(thread32);</span><br><span class="line"></span><br><span class="line">	hThreadSnap = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (hThreadSnap == INVALID_HANDLE_VALUE)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//printf(&quot;获取线程信息失败！\n&quot;);</span></span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bMoreOfThread = Thread32First(hThreadSnap, &amp;thread32);</span><br><span class="line">	<span class="keyword">while</span> (bMoreOfThread)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (thread32.th32OwnerProcessID == dwPid)</span><br><span class="line">		&#123;</span><br><span class="line">			th32ThreadID = thread32.th32ThreadID;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		bMoreOfThread = Thread32Next(hThreadSnap, &amp;thread32);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CloseHandle(hThreadSnap);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> th32ThreadID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 钩子回调函数</span></span><br><span class="line"><span class="function">LRESULT <span class="title">MessageProc</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="keyword">int</span> nCode,</span></span></span><br><span class="line"><span class="params"><span class="function">	WPARAM wParam,</span></span></span><br><span class="line"><span class="params"><span class="function">	LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (nCode == HC_ACTION)</span><br><span class="line">	&#123;</span><br><span class="line">		PCWPSTRUCT pcw = (PCWPSTRUCT)lParam;</span><br><span class="line">		<span class="keyword">if</span> (pcw-&gt;message == WM_USER + <span class="number">0x1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			OutputDebugString(<span class="string">&quot;receive data: &quot;</span>);</span><br><span class="line">			OutputDebugString(g_szBuff);</span><br><span class="line">			OutputDebugString(<span class="string">&quot;------\n&quot;</span>);</span><br><span class="line">			ZeroMemory(szBuff, <span class="keyword">sizeof</span>(szBuff));</span><br><span class="line">			<span class="built_in">sprintf</span>(szBuff, <span class="string">&quot;wParam: %d\nlParam: %d\nPID: %d\n&quot;</span>, pcw-&gt;wParam, pcw-&gt;lParam,GetCurrentProcessId());</span><br><span class="line">			<span class="comment">//MessageBoxA(0, szBuff, &quot;接收到自定义消息&quot;, 0);</span></span><br><span class="line">			OutputDebugString(szBuff);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//return TRUE;</span></span><br><span class="line">	<span class="keyword">return</span> CallNextHookEx(g_hHook, nCode, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置全局钩子</span></span><br><span class="line"><span class="function">BOOL <span class="title">SetGlobalHook</span><span class="params">(<span class="keyword">int</span> idHook, LPSTR lpszWindowName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	DWORD threadID = GetWindowThreadID(lpszWindowName);</span><br><span class="line">	<span class="keyword">if</span>(!threadID)</span><br><span class="line">	&#123;</span><br><span class="line">		MessageBox(<span class="literal">NULL</span>, <span class="string">&quot;获取目标进程PID失败!&quot;</span>, <span class="string">&quot;note&quot;</span>, MB_OK);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	g_hHook = SetWindowsHookEx(idHook, (HOOKPROC)MessageProc, g_hModuleOfDll, threadID);</span><br><span class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == g_hHook)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 卸载钩子</span></span><br><span class="line"><span class="function">BOOL <span class="title">UnsetGlobalHook</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (g_hHook)</span><br><span class="line">	&#123;</span><br><span class="line">		UnhookWindowsHookEx(g_hHook);</span><br><span class="line">		<span class="keyword">return</span> TRUE;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>测试程序</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, CHAR* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">typedef</span> <span class="title">BOOL</span><span class="params">(*typedef_SetGlobalHook)</span><span class="params">(<span class="keyword">int</span> idHook, LPSTR lpszWindowName)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">typedef</span> <span class="title">BOOL</span><span class="params">(*typedef_UnsetGlobalHook)</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">typedef</span> <span class="title">BOOL</span><span class="params">(*typedef_Write)</span><span class="params">(LPSTR lpszBuff, DWORD dwBuffLen)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">typedef</span> <span class="title">DWORD</span><span class="params">(*typedef_Read)</span><span class="params">(LPSTR lpszBuff, DWORD dwBuffLen)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">typedef</span> <span class="title">BOOL</span><span class="params">(*typedef_CreateSharedMemory)</span><span class="params">()</span></span>;</span><br><span class="line">	HMODULE hDll = <span class="literal">NULL</span>;</span><br><span class="line">	typedef_SetGlobalHook SetGlobalHook = <span class="literal">NULL</span>;</span><br><span class="line">	typedef_UnsetGlobalHook UnsetGlobalHook = <span class="literal">NULL</span>;</span><br><span class="line">	typedef_CreateSharedMemory CreateSharedMemory;</span><br><span class="line">	typedef_Write Write;</span><br><span class="line">	typedef_Read Read;</span><br><span class="line">	DWORD dwBuffLen;</span><br><span class="line">	BYTE szBuff[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	BOOL bRet = FALSE;</span><br><span class="line">	LPSTR lpszWindowName = <span class="string">&quot;mfc&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		hDll = ::LoadLibrary(<span class="string">&quot;C:\\vc6++\\MyProjects\\GlobalHook\\Debug\\GlobalHook.dll&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (<span class="literal">NULL</span> == hDll)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;LoadLibrary Error[%d]\n&quot;</span>, ::GetLastError());</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		SetGlobalHook = (typedef_SetGlobalHook)::GetProcAddress(hDll, <span class="string">&quot;SetGlobalHook&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (<span class="literal">NULL</span> == SetGlobalHook)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;GetProcAddress Error[%d]\n&quot;</span>, ::GetLastError());</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		bRet = SetGlobalHook(WH_CALLWNDPROC, lpszWindowName);</span><br><span class="line">		<span class="keyword">if</span> (bRet)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;SetGlobalHook OK.\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;SetGlobalHook ERROR.\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//write buff</span></span><br><span class="line">		Write = (typedef_Write)GetProcAddress(hDll, <span class="string">&quot;Write&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (<span class="literal">NULL</span> == Write)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;GetProcAddress Error[%d]\n&quot;</span>, GetLastError());</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		bRet = Write(<span class="string">&quot;haha,walker!&quot;</span>, <span class="number">0x20</span>);</span><br><span class="line">		<span class="keyword">if</span> (bRet)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;write success.\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;write error.\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">		// read buff</span></span><br><span class="line"><span class="comment">		Read = (typedef_Read)GetProcAddress(hDll, &quot;Read&quot;);</span></span><br><span class="line"><span class="comment">		if (NULL == Read)</span></span><br><span class="line"><span class="comment">		&#123;</span></span><br><span class="line"><span class="comment">			printf(&quot;GetProcAddress Error[%d]\n&quot;, GetLastError());</span></span><br><span class="line"><span class="comment">			break;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		dwBuffLen = sizeof(szBuff);</span></span><br><span class="line"><span class="comment">		dwBuffLen = Read((LPSTR)szBuff, dwBuffLen);</span></span><br><span class="line"><span class="comment">		if (dwBuffLen)</span></span><br><span class="line"><span class="comment">		&#123;</span></span><br><span class="line"><span class="comment">			printf(&quot;Read data: %s\n&quot;, szBuff);</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		else</span></span><br><span class="line"><span class="comment">		&#123;</span></span><br><span class="line"><span class="comment">			printf(&quot;Read error.\n&quot;);</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">		<span class="comment">//获取进程句柄</span></span><br><span class="line">		HWND hwnd = FindWindow(<span class="literal">NULL</span>, lpszWindowName);</span><br><span class="line">		<span class="keyword">if</span> (!hwnd)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//printf(&quot;获取进程句柄失败！\n&quot;);</span></span><br><span class="line">			<span class="keyword">return</span> FALSE;</span><br><span class="line">		&#125;</span><br><span class="line">		SendMessage(hwnd, WM_USER + <span class="number">0x1</span>, <span class="number">0x1234</span>, <span class="number">0x5678</span>);</span><br><span class="line"></span><br><span class="line">		UnsetGlobalHook = (typedef_UnsetGlobalHook)::GetProcAddress(hDll, <span class="string">&quot;UnsetGlobalHook&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (<span class="literal">NULL</span> == UnsetGlobalHook)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;GetProcAddress Error[%d]\n&quot;</span>, ::GetLastError());</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		bRet = UnsetGlobalHook();</span><br><span class="line">		<span class="keyword">if</span>(bRet)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;UnsetGlobalHook OK.\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;UnsetGlobalHook falied.\n&quot;</span>);</span><br><span class="line">		SendMessage(hwnd, WM_USER + <span class="number">0x1</span>, <span class="number">0x1234</span>, <span class="number">0x5678</span>);</span><br><span class="line">	&#125;<span class="keyword">while</span>(FALSE);</span><br><span class="line">	FreeLibrary(hDll);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="Win32.assets/image-20210225190048656.png" alt="image-20210225190048656" style="zoom:80%;" align='left'/>
+
+
+
+
+
+<h3 id="进程描述信息"><a href="#进程描述信息" class="headerlink" title="进程描述信息"></a>进程描述信息</h3><p>进程描述信息的存储方式如下：</p>
+<p><img src="Win32.assets/%E8%BF%9B%E7%A8%8B%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF%EF%BC%88PEB%EF%BC%89.png" alt="进程描述信息（PEB）"></p>
+<h4 id="PEB"><a href="#PEB" class="headerlink" title="_PEB"></a>_PEB</h4><p><code>PEB</code> 结构（<code>Process Envirorment Block Structure</code>），即进程环境信息块，其中包含进程的信息。该结构存储在 R3 下，供用户层使用。在  <code>R3</code> 下，<code>fs[0x30]</code> 指向 <code>_PEB</code> ，而在 <code>R0</code> 下，指向 <code>_KPCR</code> 。</p>
+<p>32位系统下的 <code>PEB</code> 的结构如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">PEB</span> &#123;</span></span><br><span class="line">  BYTE                          Reserved1[<span class="number">2</span>];</span><br><span class="line">  BYTE                          BeingDebugged;	<span class="comment">//进程是否被调试, 0:未调试, 1:正在被调试</span></span><br><span class="line">  BYTE                          Reserved2[<span class="number">1</span>];</span><br><span class="line">  PVOID                         Reserved3[<span class="number">2</span>];</span><br><span class="line">  PPEB_LDR_DATA                 Ldr;	<span class="comment">//指向PEB_LDR_DATA结构的指针，该结构包含有关该进程的已加载模块的信息</span></span><br><span class="line">  PRTL_USER_PROCESS_PARAMETERS  ProcessParameters;	</span><br><span class="line">    							<span class="comment">//指向包含过程参数信息（例如命令行）的RTL_USER_PROCESS_PARAMETERS结构的指针</span></span><br><span class="line">  PVOID                         Reserved4[<span class="number">3</span>];</span><br><span class="line">  PVOID                         AtlThunkSListPtr;</span><br><span class="line">  PVOID                         Reserved5;</span><br><span class="line">  ULONG                         Reserved6;</span><br><span class="line">  PVOID                         Reserved7;</span><br><span class="line">  ULONG                         Reserved8;</span><br><span class="line">  ULONG                         AtlThunkSListPtr32;</span><br><span class="line">  PVOID                         Reserved9[<span class="number">45</span>];</span><br><span class="line">  BYTE                          Reserved10[<span class="number">96</span>];</span><br><span class="line">  PPS_POST_PROCESS_INIT_ROUTINE PostProcessInitRoutine;</span><br><span class="line">  BYTE                          Reserved11[<span class="number">128</span>];</span><br><span class="line">  PVOID                         Reserved12[<span class="number">1</span>];</span><br><span class="line">  ULONG                         SessionId;</span><br><span class="line">&#125; PEB, *PPEB;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>64位系统下的 <code>PEB</code> 的结构如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">PEB</span> &#123;</span></span><br><span class="line">    BYTE Reserved1[<span class="number">2</span>];</span><br><span class="line">    BYTE BeingDebugged;</span><br><span class="line">    BYTE Reserved2[<span class="number">21</span>];</span><br><span class="line">    PPEB_LDR_DATA LoaderData;</span><br><span class="line">    PRTL_USER_PROCESS_PARAMETERS ProcessParameters;</span><br><span class="line">    BYTE Reserved3[<span class="number">520</span>];</span><br><span class="line">    PPS_POST_PROCESS_INIT_ROUTINE PostProcessInitRoutine;</span><br><span class="line">    BYTE Reserved4[<span class="number">136</span>];</span><br><span class="line">    ULONG SessionId;</span><br><span class="line">&#125; PEB;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 style='color:pink'>检查进程是否被3环调试器调试</h2>
+
+<p>我们可以利用 <code>IsDebuggerPresent </code> 函数检查本进程是否被3环调试器调试。</p>
+<p>测试代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	BOOL bRet = IsDebuggerPresent();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ret: %u\n&quot;</span>, bRet);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>当进程没有被调试时：</p>
+<img src="Win32.assets/image-20210301142429269.png" alt="image-20210301142429269" style="zoom:80%;" align='left'/>
+
+ 
+
+<p>当进程被调试时：</p>
+<img src="Win32.assets/image-20210301142555330.png" alt="image-20210301142555330" style="zoom:80%;" align='left'/>
+
+
+
+<hr>
+<p><strong>我们可以通过反汇编查看该函数是如何实现获取进程是否被调试的信息的。</strong></p>
+<p>可以看到，该函数从 <code>fs</code> 段寄存器中获取的数据，<code>fs:[00000030h]</code> 正是该进程的 <code>PEB</code> 首地址，从首地址偏移2字节刚好是 <code>BeingDebugged</code>。</p>
+<img src="Win32.assets/image-20210301142816239.png" alt="image-20210301142816239" style="zoom:80%;" align='left'/>
+
+
+
+<img src="Win32.assets/image-20210301143337293.png" alt="image-20210301143337293" style="zoom:80%;" align='left'/>
+
+
+
+<h4 id="PEB-LDR-DATA"><a href="#PEB-LDR-DATA" class="headerlink" title="_PEB_LDR_DATA"></a>_PEB_LDR_DATA</h4><p><code>_PEB</code> 中的 <code>ldr</code> 指向该结构，该结构包含有关该过程的已加载模块的信息。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">PEB_LDR_DATA</span> &#123;</span></span><br><span class="line">  BYTE       Reserved1[<span class="number">8</span>];</span><br><span class="line">  PVOID      Reserved2[<span class="number">3</span>];</span><br><span class="line">  LIST_ENTRY InMemoryOrderModuleList;</span><br><span class="line">&#125; PEB_LDR_DATA, *PPEB_LDR_DATA;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>内核模式下的 <code>_PEB_LDR_DATA</code> 结构如下：</p>
+<img src="Win32.assets/image-20210301144837645.png" alt="image-20210301144837645" style="zoom:80%;" align='left'/>
+
+<p>需要注意的是，<code>InMemoryOrderModuleList, InInitializationOrderModuleList, InLoadOrderModuleList</code> 中存储的是该进程的初始模块描述表的首地址。</p>
+<h4 id="LIST-ENTRY"><a href="#LIST-ENTRY" class="headerlink" title="_LIST_ENTRY"></a>_LIST_ENTRY</h4><p><code>_LIST_ENTRY </code> 结构指向双向链接列表，该列表用于索引进程中的模块项。列表中的每个项目都是指向 <strong>LDR_DATA_TABLE_ENTRY</strong> 结构的指针。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">LIST_ENTRY</span> &#123;</span></span><br><span class="line">   <span class="class"><span class="keyword">struct</span> _<span class="title">LIST_ENTRY</span> *<span class="title">Flink</span>;</span></span><br><span class="line">   <span class="class"><span class="keyword">struct</span> _<span class="title">LIST_ENTRY</span> *<span class="title">Blink</span>;</span></span><br><span class="line">&#125; LIST_ENTRY, *PLIST_ENTRY, *RESTRICTED_POINTER PRLIST_ENTRY;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="LDTE"><a href="#LDTE" class="headerlink" title="_LDTE"></a>_LDTE</h4><p><code>_LDR_DATA_TABLE_ENTRY</code>  结构用于描述进程中一个模块的信息，即当进程中有多个模块时，<code>_LDTE</code> 表就会有多张。这些 <code>_LDTE</code> 表由 <code>_LIST_ENTRY </code> 结构体中的结构性进行索引，可通过遍历 <code>_LDTE</code> 获取进程中的模块。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">LDR_DATA_TABLE_ENTRY</span> &#123;</span></span><br><span class="line">    PVOID Reserved1[<span class="number">2</span>];</span><br><span class="line">    LIST_ENTRY InMemoryOrderLinks;</span><br><span class="line">    PVOID Reserved2[<span class="number">2</span>];</span><br><span class="line">    PVOID DllBase;</span><br><span class="line">    PVOID EntryPoint;</span><br><span class="line">    PVOID Reserved3;</span><br><span class="line">    UNICODE_STRING FullDllName;</span><br><span class="line">    BYTE Reserved4[<span class="number">8</span>];</span><br><span class="line">    PVOID Reserved5[<span class="number">3</span>];</span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        ULONG CheckSum;</span><br><span class="line">        PVOID Reserved6;</span><br><span class="line">    &#125;;</span><br><span class="line">    ULONG TimeDateStamp;</span><br><span class="line">&#125; LDR_DATA_TABLE_ENTRY, *PLDR_DATA_TABLE_ENTRY;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>内核模式下的 <code>_LDR_DATA_TABLE_ENTRY</code> 结构如下：</p>
+<img src="Win32.assets/image-20210301145944169.png" alt="image-20210301145944169" style="zoom:80%;" align='left'/>
+
+
+
+<h2 style='color:pink'>遍历进程模块</h2>
+
+
+
+<p>测试代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Locale.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 内核Unicode字符串结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">UNICODE_STRING</span> &#123;</span></span><br><span class="line">	USHORT Length;</span><br><span class="line">	USHORT MaximumLength;</span><br><span class="line">	PWSTR Buffer;</span><br><span class="line">&#125; UNICODE_STRING, *PUNICODE_STRING;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ldr, 进程信息表</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">PEB_LDR_DATA</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	DWORD Length;</span><br><span class="line">	<span class="keyword">bool</span> Initialized;</span><br><span class="line">	PVOID SsHandle;</span><br><span class="line">	LIST_ENTRY InLoadOrderModuleList;</span><br><span class="line">	LIST_ENTRY InMemoryOrderModuleList;</span><br><span class="line">	LIST_ENTRY InInitializationOrderModuleList;</span><br><span class="line">&#125; PEB_LDR_DATA, *PPEB_LDR_DATA;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ldte, 模块信息表</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">LDR_DATA_TABLE_ENTRY</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	LIST_ENTRY InLoadOrderModuleList;</span><br><span class="line">	LIST_ENTRY InMemoryOrderModuleList;</span><br><span class="line">	LIST_ENTRY InInitializationOrderModuleList;</span><br><span class="line">	<span class="keyword">void</span>* BaseAddress;</span><br><span class="line">	<span class="keyword">void</span>* EntryPoint;</span><br><span class="line">	ULONG SizeOfImage;</span><br><span class="line">	UNICODE_STRING FullDllName;</span><br><span class="line">	UNICODE_STRING BaseDllName;</span><br><span class="line">	ULONG Flags;</span><br><span class="line">	SHORT LoadCount;</span><br><span class="line">	SHORT TlsIndex;</span><br><span class="line">	HANDLE SectionHandle;</span><br><span class="line">	ULONG CheckSum;</span><br><span class="line">	ULONG TimeDateStamp;</span><br><span class="line">&#125; LDR_DATA_TABLE_ENTRY, *PLDR_DATA_TABLE_ENTRY;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	_wsetlocale(LC_ALL, <span class="string">L&quot;chs&quot;</span>);</span><br><span class="line">	PPEB_LDR_DATA ldr;</span><br><span class="line">	PLDR_DATA_TABLE_ENTRY ldte;</span><br><span class="line"></span><br><span class="line">	__asm&#123;</span><br><span class="line">		pushad</span><br><span class="line">		pushfd</span><br><span class="line">		mov eax, fs: [<span class="number">0x30</span>] <span class="comment">// PEB </span></span><br><span class="line">		mov ecx, [eax + <span class="number">0x0c</span>] <span class="comment">// LDR</span></span><br><span class="line">		mov ldr, ecx</span><br><span class="line">		popfd</span><br><span class="line">		popad</span><br><span class="line">	&#125;</span><br><span class="line">	PLIST_ENTRY Header = &amp;(ldr-&gt;InLoadOrderModuleList);</span><br><span class="line">	PLIST_ENTRY Cur = Header;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		ldte = CONTAINING_RECORD(Cur, LDR_DATA_TABLE_ENTRY, InLoadOrderModuleList);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;InLoadOrderModuleList dll name: %ws\n&quot;</span>, ldte-&gt;FullDllName.Buffer);</span><br><span class="line">		Cur = Cur-&gt;Blink;</span><br><span class="line">	&#125; <span class="keyword">while</span> (Header != Cur);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">	Header = &amp;(ldr-&gt;InInitializationOrderModuleList);</span><br><span class="line">	Cur = Header;</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		ldte = CONTAINING_RECORD(Cur, LDR_DATA_TABLE_ENTRY, InInitializationOrderModuleList);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;InInitializationOrderModuleList dll name: %ws\n&quot;</span>, ldte-&gt;FullDllName.Buffer);</span><br><span class="line">		Cur = Cur-&gt;Blink;</span><br><span class="line">	&#125; <span class="keyword">while</span> (Header != Cur);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">	Header = &amp;(ldr-&gt;InMemoryOrderModuleList);</span><br><span class="line">	Cur = Header;</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		ldte = CONTAINING_RECORD(Cur, LDR_DATA_TABLE_ENTRY, InMemoryOrderModuleList);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;InMemoryOrderModuleList dll name: %ws\n&quot;</span>, ldte-&gt;FullDllName.Buffer);</span><br><span class="line">		Cur = Cur-&gt;Blink;</span><br><span class="line">	&#125; <span class="keyword">while</span> (Header != Cur);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以看到，<code>_LDR_DATA_TABLE_ENTRY</code> 表中的第一张模块信息表是空表。</p>
+<p><img src="Win32.assets/image-20210301183627625.png" alt="image-20210301183627625"></p>
+<h4 id="模块隐藏"><a href="#模块隐藏" class="headerlink" title="模块隐藏"></a>模块隐藏</h4><p>操作系统中3环的进程信息是保存在 <code>PEB</code> 中的，而进程模块信息表是通过双链循环链表实现链接的。</p>
+<p>操作系统中的进程模块遍历函数，如 <code>CreateToolhelp32Snapshot</code> 函数，便是通过实现对 <code>_LDR_DATA_TABLE_ENTRY</code> 双向循环链表的遍历实现的。因此，只要我们将链表断链，就可以实现对进程模块的隐藏。</p>
+<p><strong>经过测试发现，对 <code>InLoadOrderModuleList</code> 的断链最为重要，即使其他两个链表没有进行断链，依然可以实现对模块的隐藏。</strong></p>
+<!-- 代码见 恶意代码.进程隐藏.PEB断链 -->
+
+
+
+<p><em><strong>实现3环的模块隐藏，可以彻底实现对模块的隐藏吗？</strong></em></p>
+<p>在内核中的 <code>_EPROCESS.VadRoot</code> 成员可以实现遍历进程的内存空间的地址分配情况，仍然可以获得进程中的模块。</p>
+<img src="../windows内核/内核技术.assets/image-20210302130823287.png" alt="image-20210302130823287" style="zoom:80%;" align='left'/>
+
+
+
+
+
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="TEB"><a href="#TEB" class="headerlink" title="_TEB"></a>_TEB</h3><p><code>TEB</code>，<code>Thread Environment Block</code>，线程环境块。</p>
+<p><code>_TEB</code> 的结构如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">kd&gt; dt _TEB		<span class="comment">// fs[0]: R3 表示_TEB; R0表示 KPCR</span></span><br><span class="line">nt!_TEB	</span><br><span class="line">   +<span class="number">0x000</span> NtTib            : _NT_TIB</span><br><span class="line">   <span class="comment">/*</span></span><br><span class="line"><span class="comment">   	kd&gt; dt _NT_TIB</span></span><br><span class="line"><span class="comment">    nt!_NT_TIB</span></span><br><span class="line"><span class="comment">       +0x000 ExceptionList    : Ptr32 _EXCEPTION_REGISTRATION_RECORD	// 异常函数处理链表</span></span><br><span class="line"><span class="comment">       +0x004 StackBase        : Ptr32 Void		// R3 初始栈顶</span></span><br><span class="line"><span class="comment">       +0x008 StackLimit       : Ptr32 Void		// R3 栈界限</span></span><br><span class="line"><span class="comment">       +0x00c SubSystemTib     : Ptr32 Void		</span></span><br><span class="line"><span class="comment">       +0x010 FiberData        : Ptr32 Void</span></span><br><span class="line"><span class="comment">       +0x010 Version          : Uint4B</span></span><br><span class="line"><span class="comment">       +0x014 ArbitraryUserPointer : Ptr32 Void</span></span><br><span class="line"><span class="comment">       +0x018 Self             : Ptr32 _NT_TIB</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   +<span class="number">0x01c</span> EnvironmentPointer : Ptr32 Void</span><br><span class="line">   +<span class="number">0x020</span> ClientId         : _CLIENT_ID</span><br><span class="line">   +<span class="number">0x028</span> ActiveRpcHandle  : Ptr32 Void</span><br><span class="line">   +<span class="number">0x02c</span> ThreadLocalStoragePointer : Ptr32 Void</span><br><span class="line">   +<span class="number">0x030</span> ProcessEnvironmentBlock : Ptr32 _PEB</span><br><span class="line">   +<span class="number">0x034</span> LastErrorValue   : Uint4B</span><br><span class="line">   +<span class="number">0x038</span> CountOfOwnedCriticalSections : Uint4B</span><br><span class="line">   +<span class="number">0x03c</span> CsrClientThread  : Ptr32 Void</span><br><span class="line">   +<span class="number">0x040</span> Win32ThreadInfo  : Ptr32 Void</span><br><span class="line">   +<span class="number">0x044</span> User32Reserved   : [<span class="number">26</span>] Uint4B</span><br><span class="line">   +<span class="number">0x0ac</span> UserReserved     : [<span class="number">5</span>] Uint4B</span><br><span class="line">   +<span class="number">0x0c0</span> WOW32Reserved    : Ptr32 Void</span><br><span class="line">   +<span class="number">0x0c4</span> CurrentLocale    : Uint4B</span><br><span class="line">   +<span class="number">0x0c8</span> FpSoftwareStatusRegister : Uint4B</span><br><span class="line">   +<span class="number">0x0cc</span> SystemReserved1  : [<span class="number">54</span>] Ptr32 Void</span><br><span class="line">   +<span class="number">0x1a4</span> ExceptionCode    : Int4B</span><br><span class="line">   +<span class="number">0x1a8</span> ActivationContextStack : _ACTIVATION_CONTEXT_STACK</span><br><span class="line">   +<span class="number">0x1bc</span> SpareBytes1      : [<span class="number">24</span>] UChar</span><br><span class="line">   +<span class="number">0x1d4</span> GdiTebBatch      : _GDI_TEB_BATCH</span><br><span class="line">   +<span class="number">0x6b4</span> RealClientId     : _CLIENT_ID</span><br><span class="line">   +<span class="number">0x6bc</span> GdiCachedProcessHandle : Ptr32 Void</span><br><span class="line">   +<span class="number">0x6c0</span> GdiClientPID     : Uint4B</span><br><span class="line">   +<span class="number">0x6c4</span> GdiClientTID     : Uint4B</span><br><span class="line">   +<span class="number">0x6c8</span> GdiThreadLocalInfo : Ptr32 Void</span><br><span class="line">   +<span class="number">0x6cc</span> Win32ClientInfo  : [<span class="number">62</span>] Uint4B</span><br><span class="line">   +<span class="number">0x7c4</span> glDispatchTable  : [<span class="number">233</span>] Ptr32 Void</span><br><span class="line">   +<span class="number">0xb68</span> glReserved1      : [<span class="number">29</span>] Uint4B</span><br><span class="line">   +<span class="number">0xbdc</span> glReserved2      : Ptr32 Void</span><br><span class="line">   +<span class="number">0xbe0</span> glSectionInfo    : Ptr32 Void</span><br><span class="line">   +<span class="number">0xbe4</span> glSection        : Ptr32 Void</span><br><span class="line">   +<span class="number">0xbe8</span> glTable          : Ptr32 Void</span><br><span class="line">   +<span class="number">0xbec</span> glCurrentRC      : Ptr32 Void</span><br><span class="line">   +<span class="number">0xbf0</span> glContext        : Ptr32 Void</span><br><span class="line">   +<span class="number">0xbf4</span> LastStatusValue  : Uint4B</span><br><span class="line">   +<span class="number">0xbf8</span> StaticUnicodeString : _UNICODE_STRING</span><br><span class="line">   +<span class="number">0xc00</span> StaticUnicodeBuffer : [<span class="number">261</span>] Uint2B</span><br><span class="line">   +<span class="number">0xe0c</span> DeallocationStack : Ptr32 Void</span><br><span class="line">   +<span class="number">0xe10</span> TlsSlots         : [<span class="number">64</span>] Ptr32 Void</span><br><span class="line">   +<span class="number">0xf10</span> TlsLinks         : _LIST_ENTRY</span><br><span class="line">   +<span class="number">0xf18</span> Vdm              : Ptr32 Void</span><br><span class="line">   +<span class="number">0xf1c</span> ReservedForNtRpc : Ptr32 Void</span><br><span class="line">   +<span class="number">0xf20</span> DbgSsReserved    : [<span class="number">2</span>] Ptr32 Void</span><br><span class="line">   +<span class="number">0xf28</span> HardErrorsAreDisabled : Uint4B</span><br><span class="line">   +<span class="number">0xf2c</span> Instrumentation  : [<span class="number">16</span>] Ptr32 Void</span><br><span class="line">   +<span class="number">0xf6c</span> WinSockData      : Ptr32 Void</span><br><span class="line">   +<span class="number">0xf70</span> GdiBatchCount    : Uint4B</span><br><span class="line">   +<span class="number">0xf74</span> InDbgPrint       : UChar</span><br><span class="line">   +<span class="number">0xf75</span> FreeStackOnTermination : UChar</span><br><span class="line">   +<span class="number">0xf76</span> HasFiberData     : UChar</span><br><span class="line">   +<span class="number">0xf77</span> IdealProcessor   : UChar</span><br><span class="line">   +<span class="number">0xf78</span> Spare3           : Uint4B</span><br><span class="line">   +<span class="number">0xf7c</span> ReservedForPerf  : Ptr32 Void</span><br><span class="line">   +<span class="number">0xf80</span> ReservedForOle   : Ptr32 Void</span><br><span class="line">   +<span class="number">0xf84</span> WaitingOnLoaderLock : Uint4B</span><br><span class="line">   +<span class="number">0xf88</span> Wx86Thread       : _Wx86ThreadState</span><br><span class="line">   +<span class="number">0xf94</span> TlsExpansionSlots : Ptr32 Ptr32 Void</span><br><span class="line">   +<span class="number">0xf98</span> ImpersonationLocale : Uint4B</span><br><span class="line">   +<span class="number">0xf9c</span> IsImpersonating  : Uint4B</span><br><span class="line">   +<span class="number">0xfa0</span> NlsCache         : Ptr32 Void</span><br><span class="line">   +<span class="number">0xfa4</span> pShimData        : Ptr32 Void</span><br><span class="line">   +<span class="number">0xfa8</span> HeapVirtualAffinity : Uint4B</span><br><span class="line">   +<span class="number">0xfac</span> CurrentTransactionHandle : Ptr32 Void</span><br><span class="line">   +<span class="number">0xfb0</span> ActiveFrame      : Ptr32 _TEB_ACTIVE_FRAME</span><br><span class="line">   +<span class="number">0xfb4</span> SafeThunkCall    : UChar</span><br><span class="line">   +<span class="number">0xfb5</span> BooleanSpare     : [<span class="number">3</span>] UChar</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="系统快照"><a href="#系统快照" class="headerlink" title="系统快照"></a>系统快照</h2><p>参考：<code>https://www.write-bug.com/article/1568.html</code></p>
+<p>结构体 <code>PROCESSENTRY32</code> 的结构如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagPROCESSENTRY32</span>	</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DWORD   dwSize;	<span class="comment">// 长度 (以字节为单位), 在调用 Process32First 函数之前，将此成员设置为sizeof (PROCESSENTRY32)。如果不初始化 dwSize, 则 Process32First 将失败。</span></span><br><span class="line">    DWORD   cntUsage;	<span class="comment">// 对进程的引用数, 必须设置为1</span></span><br><span class="line">    DWORD   th32ProcessID;          <span class="comment">// 进程的标识符</span></span><br><span class="line">    ULONG_PTR th32DefaultHeapID;	<span class="comment">// 进程的默认堆的标识符</span></span><br><span class="line">    DWORD   th32ModuleID;           <span class="comment">// 进程的模块标识符, 必须为0</span></span><br><span class="line">    DWORD   cntThreads;				<span class="comment">// 进程启动的执行线程数</span></span><br><span class="line">    DWORD   th32ParentProcessID;    <span class="comment">// 父进程的进程标识符</span></span><br><span class="line">    LONG    pcPriClassBase;         <span class="comment">// 此进程创建的线程的基本优先级, 值始终为THREAD_PRIORITY_NORMAL</span></span><br><span class="line">    DWORD   dwFlags;				<span class="comment">// 保留, 不使用</span></span><br><span class="line">    CHAR    szExeFile[MAX_PATH];    <span class="comment">// 进程名</span></span><br><span class="line">&#125; PROCESSENTRY32;</span><br><span class="line"><span class="keyword">typedef</span> PROCESSENTRY32 *  PPROCESSENTRY32;</span><br><span class="line"><span class="keyword">typedef</span> PROCESSENTRY32 *  LPPROCESSENTRY32;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结构体 <code>MODULEENTRY32</code> 的结构如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagMODULEENTRY32</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DWORD   dwSize;				<span class="comment">// 结构的大小, 以字节为单位. 在调用 Module32First 函数之前, 将此成员设置为sizeof(MODULEENTRY32). 如果不初始化 dwSize, Module32First 将失败</span></span><br><span class="line">    DWORD   th32ModuleID;       <span class="comment">// 该成员不再使用, 并且始终设置为1</span></span><br><span class="line">    DWORD   th32ProcessID;      <span class="comment">// 进程标识符</span></span><br><span class="line">    DWORD   GlblcntUsage;       <span class="comment">// 模块的负载计数, 通常没有意义, 通常等于0xFFFF</span></span><br><span class="line">    DWORD   ProccntUsage;       <span class="comment">// 模块的负载计数,与 GlblcntUsage 相同, 通常没有意义, 通常等于 0xFFFF</span></span><br><span class="line">    BYTE  * modBaseAddr;        <span class="comment">// 模块基址 </span></span><br><span class="line">    DWORD   modBaseSize;        <span class="comment">// 模块的大小, 以字节为单位</span></span><br><span class="line">    HMODULE hModule;            <span class="comment">// 模块句柄</span></span><br><span class="line">    <span class="keyword">char</span>    szModule[MAX_MODULE_NAME32 + <span class="number">1</span>];	<span class="comment">// 模块名称</span></span><br><span class="line">    <span class="keyword">char</span>    szExePath[MAX_PATH];				<span class="comment">// 模块路径</span></span><br><span class="line">&#125; MODULEENTRY32;</span><br><span class="line"><span class="keyword">typedef</span> MODULEENTRY32 *  PMODULEENTRY32;</span><br><span class="line"><span class="keyword">typedef</span> MODULEENTRY32 *  LPMODULEENTRY32;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>测试代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;tlhelp32.h&gt;</span><span class="comment">//声明快照函数的头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;psapi.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/*TCHAR imageFileName[0x100] = &#123;0&#125;;</span></span><br><span class="line"><span class="comment">	DWORD nSize = sizeof(imageFileName);*/</span></span><br><span class="line">	<span class="comment">// 初始化</span></span><br><span class="line">	HANDLE hProcessSnap;	<span class="comment">// 系统快照</span></span><br><span class="line">	HANDLE hModuleSnap;		<span class="comment">// 进程快照</span></span><br><span class="line"></span><br><span class="line">	PROCESSENTRY32 pe32 = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	MODULEENTRY32 me32 = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	pe32.dwSize = <span class="keyword">sizeof</span>(pe32);</span><br><span class="line">	me32.dwSize = <span class="keyword">sizeof</span>(me32);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 拍摄快照</span></span><br><span class="line">	hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (hProcessSnap == INVALID_HANDLE_VALUE)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;CreateToolhelp32Snapshot调用失败\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	BOOL bMoreOfProcess = Process32First(hProcessSnap, &amp;pe32);</span><br><span class="line">	BOOL bMoreOfSection;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span> (bMoreOfProcess)</span><br><span class="line">	&#123;</span><br><span class="line">		hModuleSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, pe32.th32ProcessID);</span><br><span class="line">		bMoreOfSection = Module32First(hModuleSnap, &amp;me32);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;进程ID(mian): %u - %u\n&quot;</span>, pe32.th32ProcessID, me32.th32ProcessID);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;进程名：%ws - %ws\n&quot;</span>, pe32.szExeFile, me32.szModule);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;镜像基址: %p\n&quot;</span>, me32.modBaseAddr);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;镜像大小: %u\n&quot;</span>, me32.modBaseSize);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;镜像路径: %ws\n&quot;</span>, me32.szExePath);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		bMoreOfProcess = Process32Next(hProcessSnap, &amp;pe32);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CloseHandle(hProcessSnap);</span><br><span class="line">	system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="Win32.assets/image-20210210162940870.png" alt="image-20210210162940870"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/win32/" rel="tag"># win32</a>
+          
+            <a href="/tags/%E5%86%85%E6%A0%B8/" rel="tag"># 内核</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E6%9D%82%E8%B0%88/my-first-blog/" rel="prev" title="my-first-blog">
+                my-first-blog <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2Ff6%2Fc9%2Ff6%2Ff6c9f647a533782026c0609ac5d550df.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643531815&t=c2c18e0685888311dca4f731dd286208"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Win32"><span class="nav-number">1.</span> <span class="nav-text">Win32</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">1.1.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A5%E6%9F%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">句柄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">进程安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.4.</span> <span class="nav-text">类型转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="nav-number">1.2.1.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">自定义消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">共享内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E7%AE%A1%E9%81%93"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">匿名管道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">命名管道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dll%E5%85%B1%E4%BA%AB%E8%8A%82"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">Dll共享节</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.2.</span> <span class="nav-text">进程描述信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PEB"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">_PEB</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">检查进程是否被3环调试器调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PEB-LDR-DATA"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">_PEB_LDR_DATA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LIST-ENTRY"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">_LIST_ENTRY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LDTE"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">_LDTE</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">遍历进程模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E9%9A%90%E8%97%8F"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">模块隐藏</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TEB"><span class="nav-number">1.5.1.</span> <span class="nav-text">_TEB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%BF%AB%E7%85%A7"><span class="nav-number">1.6.</span> <span class="nav-text">系统快照</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">walker</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by walker</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
